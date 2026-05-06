@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Hero from "./sections/Hero";
 import Alerts from "./components/Alerts";
 import KPICards from "./components/KPICards";
+import ForecastChart from "./components/ForecastChart";
 
 function App() {
 
@@ -35,6 +36,17 @@ function App() {
 
         {/* KPI CARDS */}
         <KPICards product={product} />
+
+        {/* FORECAST CHART */}
+        <div className="bg-white p-6 rounded-2xl shadow">
+
+          <h2 className="text-2xl font-bold mb-6">
+            📊 Demand Forecast (Next 7 Days)
+          </h2>
+
+          <ForecastChart product={product} />
+
+        </div>
 
       </div>
 

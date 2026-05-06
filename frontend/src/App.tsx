@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Sidebar from "./components/Sidebar";
+import Hero from "./sections/Hero";
 
 function App() {
 
@@ -15,11 +16,9 @@ function App() {
         setProduct={setProduct}
       />
 
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6 space-y-6">
 
-        <h1 className="text-5xl font-bold text-green-700">
-          SmartStock AI Working 🚀
-        </h1>
+        <Hero product={product} />
 
       </div>
 

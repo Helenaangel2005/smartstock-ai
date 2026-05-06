@@ -5,6 +5,7 @@ import Hero from "./sections/Hero";
 import Alerts from "./components/Alerts";
 import KPICards from "./components/KPICards";
 import ForecastChart from "./components/ForecastChart";
+import Simulator from "./components/Simulator";
 
 function App() {
 
@@ -47,6 +48,9 @@ function App() {
           <ForecastChart product={product} />
 
         </div>
+
+        {/* WHAT-IF SIMULATOR */}
+        <Simulator product={product} />
 
       </div>
 

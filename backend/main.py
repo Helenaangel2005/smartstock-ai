@@ -34,7 +34,9 @@ app.add_middleware(
 # DATABASE
 # =========================
 
-DATABASE_URL = "postgresql://postgres:postgres123@localhost/smartstock"
+import os
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 

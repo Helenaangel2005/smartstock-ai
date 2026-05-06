@@ -290,7 +290,11 @@ def generate_summary(
 # =========================
 # CSV UPLOAD
 # =========================
-
+@app.get("/")
+def home():
+    return {
+        "message": "SmartStock AI Backend Running Successfully"
+    }
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
 

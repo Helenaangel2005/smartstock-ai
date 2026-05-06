@@ -6,62 +6,92 @@ export default function Alerts() {
   const [alerts, setAlerts] = useState<any[]>([]);
 
   useEffect(() => {
-    fetchAlerts();
+
+    axios
+      .get("https://smartstock-ai-x150.onrender.com/alerts")
+      .then((res) => {
+
+        console.log("Alerts API:", res.data);
+
+        if (Array.isArray(res.data)) {
+          setAlerts(res.data);
+        } else {
+          setAlerts([]);
+        }
+
+      })
+      .catch((err) => {
+        console.log(err);
+        setAlerts([]);
+      });
+
   }, []);
 
-  const fetchAlerts = async () => {
-    const res = await axios.get(
-      "https://smartstock-ai-x150.onrender.com"
-    );
-
-    setAlerts(res.data);
-  };
-
   return (
+
     <div className="bg-white p-6 rounded-2xl shadow">
 
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl font-bold mb-6">
         🔥 Priority Action Center
       </h2>
 
-      <div className="space-y-4">
+      {alerts.length === 0 ? (
 
-        {alerts.map((a, index) => (
+        <div className="bg-gray-100 p-4 rounded-xl">
+          No active alerts
+        </div>
 
-          <div
-            key={index}
-            className="flex justify-between items-center p-4 rounded-xl border"
-          >
+      ) : (
 
-            <div>
-              <h3 className="font-semibold text-lg">
-                {a.product}
-              </h3>
+        <div className="space-y-4">
 
-              <p className="text-gray-500 text-sm">
-                Reorder: {a.reorder} units
-              </p>
+          {alerts.map((item, index) => (
 
-              <p className="text-gray-500 text-sm">
-                Waste Risk: {(a.waste * 100).toFixed(0)}%
-              </p>
+            <div
+              key={index}
+              className="border rounded-xl p-4 flex justify-between items-center"
+            >
+
+              <div>
+
+                <h3 className="text-2xl font-semibold">
+                  {item.product}
+                </h3>
+
+                <p className="text-gray-600">
+                  Reorder: {item.reorder} units
+                </p>
+
+                <p className="text-gray-600">
+                  Waste Risk: {item.waste}%
+                </p>
+
+              </div>
+
+              <div
+                className={`
+                  px-6 py-3 rounded-full text-white font-bold
+                  ${
+                    item.priority === "URGENT"
+                      ? "bg-red-500"
+                      : item.priority === "HIGH"
+                      ? "bg-orange-500"
+                      : "bg-green-500"
+                  }
+                `}
+              >
+                {item.priority}
+              </div>
+
             </div>
 
-            <span className={`px-4 py-2 rounded-full text-white font-semibold
-              ${a.priority === "URGENT"
-                ? "bg-red-600"
-                : a.priority === "HIGH"
-                ? "bg-orange-500"
-                : "bg-yellow-500"}
-            `}>
-              {a.priority}
-            </span>
+          ))}
 
-          </div>
+        </div>
 
-        ))}
+      )}
 
-      </div>
     </div>
+
   );
 }

@@ -8,7 +8,7 @@ export default function KPICards({ product }: any) {
   useEffect(() => {
 
     axios
-      .get(`http://127.0.0.1:8000/insights/${product}`)
+      .get(`https://smartstock-ai-x150.onrender.com/insights/${product}`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
 

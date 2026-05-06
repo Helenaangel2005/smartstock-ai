@@ -10,7 +10,7 @@ export default function Hero({ product }: any) {
       const form = new FormData();
       form.append("file", file);
 
-      await axios.post("http://127.0.0.1:8000/upload", form);
+      await axios.post("https://smartstock-ai-x150.onrender.com/upload", form);
 
       alert("✅ Sales data uploaded successfully!");
 

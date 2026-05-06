@@ -9,7 +9,7 @@ export default function Simulator({ product }: any) {
 
   const runSimulation = async () => {
     try {
-      const res = await axios.post("http://127.0.0.1:8000/simulate", {
+      const res = await axios.post("https://smartstock-ai-x150.onrender.com/simulate", {
         product: product,
         festival: festival,
         weather: weather,

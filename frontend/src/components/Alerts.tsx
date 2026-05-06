@@ -11,7 +11,7 @@ export default function Alerts() {
 
   const fetchAlerts = async () => {
     const res = await axios.get(
-      "http://127.0.0.1:8000/alerts"
+      "https://smartstock-ai-x150.onrender.com"
     );
 
     setAlerts(res.data);

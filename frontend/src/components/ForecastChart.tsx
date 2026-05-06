@@ -14,7 +14,7 @@ export default function ForecastChart({ product }: any) {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/insights/${product}`)
+    axios.get(`https://smartstock-ai-x150.onrender.com/insights/${product}`)
       .then(res => {
         const preds = res.data.predictions;
 

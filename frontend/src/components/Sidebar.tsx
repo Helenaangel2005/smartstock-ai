@@ -30,7 +30,7 @@ export default function Sidebar({ selected, setProduct }: any) {
       setLoading(true);
 
       const res = await axios.get(
-        "http://127.0.0.1:8000/bulk-insights"
+        "https://smartstock-ai-x150.onrender.com/bulk-insights"
       );
 
       setRiskMap(res.data);
